@@ -132,6 +132,10 @@ See https://www.megamenu.com for more screenshots
 
 == Changelog ==
 
+= 3.4.1 =
+
+* Fix: PHP 5.6 compatibility
+
 = 3.4 =
 
 * New: Allow off canvas menus to be 100% wide

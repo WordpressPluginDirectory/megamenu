@@ -3,7 +3,7 @@
  * Plugin Name: Max Mega Menu
  * Plugin URI:  https://www.megamenu.com
  * Description: An easy to use mega menu plugin. Written the WordPress way.
- * Version:     3.4
+ * Version:     3.4.1
  * Author:      megamenu.com
  * Author URI:  https://www.megamenu.com
  * License:     GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '3.4';
+		public $version = '3.4.1';
 
 
 		/**
@@ -561,7 +561,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 		    }
 
 		    // Retrieve theme location and mega menu settings
-		    $location = $args->theme_location ?? null;
+		    $location = $args->theme_location;
 		    $settings = get_option( 'megamenu_settings', [] );
 
 		    // Check if mobile effect is set and is either 'slide_left' or 'slide_right'
