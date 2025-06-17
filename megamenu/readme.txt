@@ -132,6 +132,10 @@ See https://www.megamenu.com for more screenshots
 
 == Changelog ==
 
+= 3.6.1 =
+
+* Fix: PHP Error when percentage sign used in HTML block in menu toggle bar
+
 = 3.6 =
 
 * New: Experimental 'Use Flex CSS' option added to theme editor for new installations of MMM (will become available to existing installations in future versions)
