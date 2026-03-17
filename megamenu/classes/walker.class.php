@@ -30,6 +30,7 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 		function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$style = "";
 			$role = "";
+			$id_attr = "";
 
 			if ( $this->currentItem !== null ) {
 				$id = $this->currentItem->ID;
@@ -44,11 +45,16 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 				if ( is_array( $classes ) && ( in_array( 'menu-row', $classes ) || in_array( 'menu-grid', $classes ) ) ) {
 					$role = " role='presentation'";
 				}
+
+				if ( is_array( $classes ) && ( in_array( 'menu-grid', $classes ) ) ) {
+					$id_attr = " id='mega-sub-menu-{$id}'";
+				}
+
 			}
 			
 			$indent = str_repeat( "\t", $depth );
 
-			$output .= "\n$indent<ul class=\"mega-sub-menu\"{$style}{$role}>\n";
+			$output .= "\n$indent<ul class=\"mega-sub-menu\"{$style}{$role}{$id_attr}>\n";
 		}
 
 		/**
@@ -177,6 +183,7 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 				if ( is_array( $classes ) && in_array( 'menu-item-has-children', $classes ) && $item->parent_submenu_type == 'flyout' ) {
 
 					$atts['aria-expanded'] = 'false';
+					$atts['aria-controls'] = 'mega-sub-menu-' . $item->ID;
 
 					if ( is_array( $mega_classes ) && in_array( 'mega-toggle-on', $mega_classes ) ) {
 						$atts['aria-expanded'] = 'true';
@@ -184,7 +191,6 @@ if ( ! class_exists( 'Mega_Menu_Walker' ) ) :
 
 					if ( isset( $settings['disable_link'] ) && $settings['disable_link'] == 'true' ) {
 						$atts['role'] = 'button';
-						//$atts['aria-controls'] = 'mega-sub-menu-' . $item->ID;
 					}
 				}
 
