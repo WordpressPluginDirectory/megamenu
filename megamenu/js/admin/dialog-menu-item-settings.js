@@ -595,6 +595,19 @@
         };
 
         /**
+         * Records the panels container scrollTop as `--mmm-panels-scroll` for widget-inner vertical centering.
+         * Shared by grid (#megamenu-grid) and classic (#megamenu-standard) builders — must live outside setup_grid.
+         *
+         * @param {JQuery} widget .mega-widget instance
+         */
+        function recordPanelsScroll(widget) {
+            var panels = widget.closest(".megamenu-dialog-panels")[0];
+            if (panels) {
+                panels.style.setProperty("--mmm-panels-scroll", panels.scrollTop + "px");
+            }
+        }
+
+        /**
          * Binds mega grid layout: columns, rows, widgets, drag/drop, and megamenu_save_grid_data.
          *
          * @param {jQuery} content .megamenu_content.mega_menu fragment containing #megamenu-grid
@@ -873,18 +886,6 @@
                 }
 
             });
-
-            /**
-             * Records the panels container's current scrollTop as a CSS custom property
-             * (--mmm-panels-scroll) so the widget-inner dialog can centre itself within
-             * the *visible* panels area via `top: calc(var(--mmm-panels-scroll) + 50%)`.
-             */
-            function recordPanelsScroll(widget) {
-                var panels = widget.closest('.megamenu-dialog-panels')[0];
-                if (panels) {
-                    panels.style.setProperty('--mmm-panels-scroll', panels.scrollTop + 'px');
-                }
-            }
 
             grid.on("click", ".mega-widget-action", function() {
 
