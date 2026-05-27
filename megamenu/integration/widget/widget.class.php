@@ -126,7 +126,8 @@ if ( ! class_exists( 'Mega_Menu_Widget' ) ) :
 						$disabled_locations = [];
 
 					foreach ( $locations as $location => $description ) {
-						if ( max_mega_menu_is_enabled( $location ) ) {
+						$loc = Mega_Menu_Location::find( $location );
+						if ( $loc && $loc->is_active() ) {
 							$enabled_locations[ $location ] = $description;
 						} else {
 							$disabled_locations[ $location ] = $description;
