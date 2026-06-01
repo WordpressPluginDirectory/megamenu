@@ -64,10 +64,6 @@
                 @if $transitions == 'on' {
                     transition: background 200ms linear, color 200ms linear, border 200ms linear;
                 }
-
-                &:before {
-                    display: flex;
-                }
             }
 
             .mega-menu-link {

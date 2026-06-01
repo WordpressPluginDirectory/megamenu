@@ -216,6 +216,8 @@ if ( ! class_exists( 'Mega_Menu_Location' ) ) :
 			$vars['close_icon_font']        = 'dashicons';
 			if ( isset( $theme_settings['close_icon'] ) && strpos( $theme_settings['close_icon'], 'mat-' ) === 0 ) {
 				$vars['close_icon_font'] = 'var(--wp--preset--font-family--material-symbols)';
+			} elseif ( isset( $theme_settings['close_icon'] ) && strpos( $theme_settings['close_icon'], 'svg-' ) === 0 ) {
+				$vars['close_icon_font'] = 'svg';
 			}
 			$vars['close_icon_font_weight'] = 'normal';
 			$vars['arrow_combinator']       = "'>'";

@@ -3587,6 +3587,10 @@ body.maxmegamenu-admin.nav-menus-php {
 						}
 					}
 				}
+
+				div.disabled label:before {
+					content: "";
+				}
 			}
 
 			// Max Mega Menu Pro: FA / Genericons tiles use `label[rel]` for the glyph (HTML entity), not `--mmm-i`.

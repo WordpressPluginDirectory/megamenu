@@ -529,21 +529,22 @@
                             instanceApi.currentSettings.onColorChange.call($originalInput, finalColorString, $originalInput); 
                         }
 
-                        function updateColorFromMainCanvas(event) { 
+                        function updateColorFromMainCanvas(event) {
                             if(!mainCanvasEl) return;
-                            isCssVarMode = false; currentCssVarString = ''; 
+                            isCssVarMode = false; currentCssVarString = '';
                             const rect = mainCanvasEl.getBoundingClientRect();
                             let x = event.clientX - rect.left; let y = event.clientY - rect.top;
                             const width = mainCanvasEl.width; const height = mainCanvasEl.height;
                             x = Math.max(0, Math.min(width, x)); y = Math.max(0, Math.min(height, y));
-                            
+
                             const s_hsv = x / width;
                             const v_hsv = 1 - (y / height);
-                            const [h, s_hsl, l_hsl] = hsvToHsl(currentHslHue, s_hsv, v_hsv); 
-                            
+                            const [h, s_hsl, l_hsl] = hsvToHsl(currentHslHue, s_hsv, v_hsv);
+
                             currentHslSaturation = s_hsl;
                             currentHslLightness = l_hsl;
-                            
+                            if (currentAlpha === 0) currentAlpha = 1;
+
                             handleColorSelectionChange();
                         }
                         function updateColorFromHueSlider(event) { 

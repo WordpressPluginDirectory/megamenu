@@ -1889,4 +1889,32 @@
 
     };
 
+    // Clicking an already-selected icon radio deselects it and falls back to #disabled.
+    $(document).on(
+        "mousedown",
+        MENU_ITEM_DIALOG_SEL + " input[name='settings[icon]']",
+        function () {
+            $(this).data("mmmWasChecked", this.checked);
+        }
+    );
+
+    $(document).on(
+        "click",
+        MENU_ITEM_DIALOG_SEL + " input[name='settings[icon]']",
+        function () {
+            if (this.value === "disabled" || !$(this).data("mmmWasChecked")) {
+                return;
+            }
+            var $disabled = $(this).closest("form").find("input#disabled");
+            if (!$disabled.length) {
+                $disabled = $(MENU_ITEM_DIALOG_SEL).find("input#disabled").first();
+            }
+            if (!$disabled.length) {
+                return;
+            }
+            this.checked = false;
+            $disabled.prop("checked", true).trigger("change");
+        }
+    );
+
 }(jQuery));

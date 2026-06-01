@@ -884,7 +884,7 @@
 
         plugin.initToggleBar = function() {
             $toggle_bar.on("click", function(e) {
-                const isToggleTrigger = $(e.target).closest(".mega-toggle-label, button.mega-toggle-animated, .mega-menu-toggle-custom-block", this).length;
+                const isToggleTrigger = $(e.target).closest(".mega-menu-toggle-block, button.mega-toggle-animated, .mega-menu-toggle-custom-block", this).length;
 
                 if ( isToggleTrigger ) {
                     e.preventDefault();

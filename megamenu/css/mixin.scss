@@ -346,22 +346,25 @@
                         left: 0;
                     }
 
-                    &:before {
-                        content: $close_icon;
-                        font-family: $close_icon_font;
-                        font-weight: $close_icon_font_weight;
-                        color: $close_icon_color;
-                        font-size: $close_icon_font_size;
-                    }
-
-                    svg {
-                        display: block;
-                        width: $close_icon_font_size;
-                        height: $close_icon_font_size;
-                        color: $close_icon_color;
-                        stroke: currentColor;
-                        stroke-width: 2;
-                        fill: none;
+                    @if $close_icon_font == svg {
+                        svg {
+                            display: flex;
+                            width: $close_icon_font_size;
+                            height: $close_icon_font_size;
+                            color: $close_icon_color;
+                            stroke: currentColor;
+                            stroke-width: 2;
+                            fill: none;
+                        }
+                    } @else {
+                        &:before {
+                            display: flex;
+                            content: $close_icon;
+                            font-family: $close_icon_font;
+                            font-weight: $close_icon_font_weight;
+                            color: $close_icon_color;
+                            font-size: $close_icon_font_size;
+                        }
                     }
                 }
 

@@ -273,7 +273,7 @@
                 return v;
             }
         } catch (ignore) {}
-        return "custom:transparent";
+        return "custom:rgba(67,67,67,0.5)";
     }
 
     function megamenuPreviewShellBgWrite(location, value) {
@@ -597,6 +597,10 @@
         $dialog.find(".megamenu-location-settings-dialog__footer-preview").prop("hidden", true);
         megamenuLocationDialogSwapExpandI18n($dialog, "settings");
         megamenuLocationDialogSyncModePill($dialog, false);
+        var $btn = $dialog.find(".megamenu-location-settings-dialog-save");
+        var origLabel = $btn.data("mmm-save-label");
+        if (origLabel) $btn.html(origLabel);
+        $btn.prop("disabled", false);
     }
 
     function megamenuLocationDialogClearPreviewStateForNewLoad($dialog) {
